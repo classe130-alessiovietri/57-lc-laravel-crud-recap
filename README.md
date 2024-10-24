@@ -1,16 +1,17 @@
-# Passi da fare per poter utilizzare il template di Laravel
+La mia entità è "prodotto"
 
-0. Creo la repository a partire dal template e mi clono la repository appena creata
-
-1. Copio il file .env.example e lo rinomino in .env
-
-2. Apro il terminale ed eseguo il comando composer install
-
-3. Sempre nel terminale, al termine del comando composer install, eseguo il comando php artisan key:generate
-
-4. Sempre nel terminale, al termine dell'esecuzione di php artisan key:generate, eseguiamo il comando npm install (oppure, npm i)
-
-5. Sempre nel terminale, al termine di npm install, eseguire il comando npm run build
-- Al posto di npm run build, potreste eseguire npm run dev e lasciarlo attivo
-
-6. Aprire un altro terminale ed eseguire il comando php artisan serve
+Devo creare:
+1. database -> come mi pare
+    -> SUBITO DOPO -> collego nel file .env
+    -> se voglio testare il collegamento, eseguo il comando php artisan migrate (perché delle migration ce le ho già)
+--- ESEGUENDO IL COMANDO php artisan make:model Product -msr FACCIO IN UN SOL COLPO ----
+2. migration -> create_products_table
+    -> SUBITO DOPO -> definiamo la struttura della tabella
+    -> poi, php artisan migrate
+3. model -> Product
+    -> SE voglio sfruttare il mass assignment, posso anche già riempire $fillable
+4. seeder -> ProductSeeder / ProductsTableSeeder
+5. controller -> ProductController
+----------------------------------------------------------------------------------------
+5. view (4) -> products/index/show/create/edit.blade.php
+5. route (7) -> products.index/show/create/store/edit/update/destroy
