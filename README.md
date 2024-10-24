@@ -11,6 +11,7 @@ Devo creare:
 3. model -> Product
     -> SE voglio sfruttare il mass assignment, posso anche già riempire $fillable
 4. seeder -> ProductSeeder / ProductsTableSeeder
+    -> SE voglio semplificare l'esecuzione del mio seeder, lo inserisco con $this->call() in DatabaseSeeder
 5. controller -> ProductController
 ----------------------------------------------------------------------------------------
 5. view (4) -> products/index/show/create/edit.blade.php
