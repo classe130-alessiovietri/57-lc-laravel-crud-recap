@@ -14,7 +14,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get();
+        $queryStringParams = request()->all();
+
+        // $products = Product::where('id', '>', 0);
+        $products = Product::whereNotNull('id');
+
+        if (isset($queryStringParams['name'])) {
+            $products = $products->where('name', 'LIKE', '%'.$queryStringParams['name'].'%');
+        }
+
+        if (isset($queryStringParams['visible'])) {
+            $products = $products->where('visible', true);
+        }
+
+        $products = $products->get();
+
 
         return view('products.index', compact('products'));
     }

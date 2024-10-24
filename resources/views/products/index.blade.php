@@ -7,6 +7,25 @@
     Prodotti
 </h1>
 
+<div class="my-3">
+    <form action="{{ route('products.index') }}" method="GET">
+
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" id="name" name="name"
+                    value="{{ request()->input('name') }}"
+                    placeholder="Cerca per nome...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">
+                    Cerca
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
 <table class="table">
     <thead>
         <tr>
