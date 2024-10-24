@@ -36,7 +36,11 @@
                         </strong>
                     @endif
                 </td>
-                <td></td>
+                <td>
+                    <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary btn-sm">
+                        Vedi
+                    </a>
+                </td>
             </tr>
         @endforeach
     </tbody>

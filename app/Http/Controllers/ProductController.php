@@ -40,8 +40,26 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
+    // public function show(string $id)
+    // {
+    //     $product = Product::find($id);
+    //     $product = Product::where('id', $id)->first();
+
+    //     if ($product == null) {
+    //         abort(404);
+    //     }
+
+    //     /*
+    //         OPPURE
+    //     */
+
+    //     $product = Product::findOrFail($id);
+    //     $product = Product::where('id', $id)->firstOrFail();
+
+    //     return view('products.show', compact('product'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
