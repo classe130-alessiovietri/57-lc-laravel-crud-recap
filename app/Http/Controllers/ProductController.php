@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -46,7 +46,44 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => [
+                'required',
+                'min:3',
+                'max:64'
+            ],
+            'price' => 'required|numeric|min:0|max:999.99',
+            'description' => 'required|max:4096',
+            'img' => 'nullable|url',
+            'quantity' => 'required|numeric|min:0',
+            'category' => 'required|max:16',
+            'tags' => 'nullable|min:3|max:128',
+            'visible' => '',
+        ]);
+
+        // $product = new Product();
+        // $product->name = $validatedData['name'];
+        // $product->slug = str()->slug($validatedData['name']);
+        // $product->price = $validatedData['price'];
+        // $product->description = $validatedData['description'];
+        // $product->img = $validatedData['img'];
+        // $product->quantity = $validatedData['quantity'];
+        // $product->category = $validatedData['category'];
+        // $tagsArray = explode(',', $validatedData['tags']);
+        // $product->tags = json_encode($tagsArray);
+        // // $product->visible = isset($validatedData['visible']);
+        // $product->visible = array_key_exists('visible', $validatedData);
+        // $product->save();
+
+        /* OPPURE */
+
+        $validatedData['slug'] = str()->slug($validatedData['name']);
+        $tagsArray = explode(',', $validatedData['tags']);
+        $validatedData['tags'] = json_encode($tagsArray);
+        $validatedData['visible'] = array_key_exists('visible', $validatedData);
+        $product = Product::create($validatedData);
+
+        return redirect()->route('products.show', ['product' => $product->id]);
     }
 
     /**

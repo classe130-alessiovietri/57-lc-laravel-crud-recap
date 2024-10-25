@@ -8,6 +8,12 @@
 </h1>
 
 <div class="my-3">
+    <a href="{{ route('products.create') }}" class="btn btn-success w-100">
+        + Aggiungi
+    </a>
+</div>
+
+<div class="my-3">
     <form action="{{ route('products.index') }}" method="GET">
 
         <div class="row">
